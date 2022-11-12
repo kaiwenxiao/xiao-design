@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   } = props;
 
   // btn btn-lg btn-primary
-  const classes = classNames("btn", {
+  const classes = classNames("btn", className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     disabled: btnType === ButtonType.Link && disabled,
