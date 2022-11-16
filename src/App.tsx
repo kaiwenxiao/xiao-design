@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import Button, { ButtonSize, ButtonType } from "./components/Button/button";
+import { Icon } from "./components/Icon/icon";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import Transition from "./components/Transition/transition";
+// import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+// 添加solid全部图标
+import { fas } from "@fortawesome/free-solid-svg-icons";
+library.add(fas);
 
 function App() {
+  const [show, setShow] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
-        <FontAwesomeIcon icon={faCoffee} size={"lg"} />
+        <Button
+          size={ButtonSize.Large}
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          Toggle
+        </Button>
+        <Transition
+          in={show}
+          timeout={300}
+          animation="zoom-in-left"
+          addEndListener={() => {}}
+        >
+          <div>
+            <p>
+              eidt<code>src/app.vue</code>
+            </p>
+            <Button btnType={ButtonType.Default}>hello</Button>
+          </div>
+        </Transition>
+        <Icon icon="arrow-down" theme="primary" size="10x" />
         <Menu
-          mode={"vertical"}
+          // mode={"vertical"}
           defalutIndex={"0"}
           defaultOpenSubMenus={["1"]}
           onSelect={(index) => {
