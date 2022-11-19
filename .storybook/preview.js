@@ -30,4 +30,4 @@ export const decorators = [
 
 // 全局控制
 addDecorator(withInfo)
-addParameters({ info: { inline: true, header: false } })
+addParameters({ info: { inline: true, header: false } }) 
